@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 import 'const/myStrings.dart';
@@ -13,16 +11,16 @@ class MyHomePage extends StatelessWidget {
       body: Stack(children: [
         Column(
           children: [
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num1)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num2)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num3)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num4)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num5)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num6)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num7)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num8)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num9)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.num0)),
+            MyElevatedButton(textforButton: MyStrings.num0),
+            MyElevatedButton(textforButton: MyStrings.num1),
+            MyElevatedButton(textforButton: MyStrings.num2),
+            MyElevatedButton(textforButton: MyStrings.num3),
+            MyElevatedButton(textforButton: MyStrings.num4),
+            MyElevatedButton(textforButton: MyStrings.num5),
+            MyElevatedButton(textforButton: MyStrings.num6),
+            MyElevatedButton(textforButton: MyStrings.num7),
+            MyElevatedButton(textforButton: MyStrings.num8),
+            MyElevatedButton(textforButton: MyStrings.num9),
             const SizedBox(
               height: 200,
             ),
@@ -46,32 +44,17 @@ class MyHomePage extends StatelessWidget {
         ),
       ]),
     );
-    // return Scaffold(
-    //   body: Row(
-    //     children: [
-    //       Column(
-    //         children: [
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num1)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num2)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num3)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num4)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num5)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num6)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num7)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num8)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num9)),
-    //           ElevatedButton(onPressed: () {}, child: Text(MyStrings.num0)),
-    //         ],
-    //       ),
-    //       const SizedBox(
-    //         width: 20,
-    //       ),
-    //       ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
-    //       ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation2)),
-    //       ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation3)),
-    //       ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation4)),
-    //     ],
-    //   ),
-    // );
+  }
+}
+
+class MyElevatedButton extends StatelessWidget {
+  MyElevatedButton({
+    required this.textforButton,
+    Key? key,
+  }) : super(key: key);
+  String textforButton;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: () {}, child: Text(textforButton));
   }
 }
