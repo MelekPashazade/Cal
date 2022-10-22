@@ -11,7 +11,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int m = getNumb.getNumber(MyStrings.num1);
+  // int m = getNumb.getNumber(MyStrings.num1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 200,
             ),
-            Text(m.toString())
+            //  Text()
           ],
         ),
         Row(

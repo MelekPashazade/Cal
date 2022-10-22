@@ -13,7 +13,7 @@ class MyNumbersElevatedButton extends StatefulWidget {
 
 class _MyNumbersElevatedButtonState extends State<MyNumbersElevatedButton> {
   int number = 0;
-
+  String textforfield = '';
 // int getNumber() {
 //     setState(() {
 //       number = int.parse(widget.textforButton);
@@ -24,18 +24,20 @@ class _MyNumbersElevatedButtonState extends State<MyNumbersElevatedButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          getNumb.getNumber(widget.textforButton);
+          textforfield = widget.textforButton;
+          print(textforfield);
+          // getNumb.getNumber(widget.textforButton);
         },
         child: Text(widget.textforButton));
   }
 }
 
-class getNumb {
-  static int getNumber(String textforButton) {
-    int number = int.parse(textforButton);
-    return number;
-  }
-}
+// class getNumb {
+//   static int getNumber(String textforButton) {
+//     int number = int.parse(textforButton);
+//     return number;
+//   }
+// }
 
 class MyOperationsElevatedButton extends StatelessWidget {
   MyOperationsElevatedButton({
