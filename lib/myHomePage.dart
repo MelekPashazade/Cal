@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'const/myStrings.dart';
 import 'widgets/myElevatedButtons.dart';
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
-  int m = MyNumbersElevatedButton.getNumber();
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int m = getNumb.getNumber(MyStrings.num1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

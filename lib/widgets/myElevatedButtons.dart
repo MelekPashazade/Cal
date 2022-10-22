@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
 
-class MyNumbersElevatedButton extends StatelessWidget {
+class MyNumbersElevatedButton extends StatefulWidget {
   MyNumbersElevatedButton({
     required this.textforButton,
     Key? key,
   }) : super(key: key);
   String textforButton;
-  int number = 0;
-  void getNumber() {
-    number = int.parse(textforButton);
-    print(number);
-  }
 
+  @override
+  State<MyNumbersElevatedButton> createState() => _MyNumbersElevatedButtonState();
+}
+
+class _MyNumbersElevatedButtonState extends State<MyNumbersElevatedButton> {
+  int number = 0;
+
+// int getNumber() {
+//     setState(() {
+//       number = int.parse(widget.textforButton);
+//     });
+//     return number;
+//   }
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          getNumber();
+          getNumb.getNumber(widget.textforButton);
         },
-        child: Text(textforButton));
+        child: Text(widget.textforButton));
+  }
+}
+
+class getNumb {
+  static int getNumber(String textforButton) {
+    int number = int.parse(textforButton);
+    return number;
   }
 }
 
