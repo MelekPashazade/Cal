@@ -13,4 +13,5 @@ class MyStrings {
   static String operation2 = '-';
   static String operation3 = '*';
   static String operation4 = '/';
+  static String operationEqual = '=';
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'const/myStrings.dart';
-import 'widgets/myElevatedButtons.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -10,7 +9,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-String userInput = '1';
+String userInput = '';
+int? result;
 
 class _MyHomePageState extends State<MyHomePage> {
   // int m = getNumb.getNumber(MyStrings.num1);
@@ -23,14 +23,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num0;
+                    if (userInput == '') {
+                      userInput = MyStrings.num0;
+                    } else {
+                      userInput = userInput + MyStrings.num0;
+                    }
                   });
                 },
                 child: Text(MyStrings.num0)),
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num1;
+                    if (userInput == '') {
+                      userInput = MyStrings.num1;
+                    } else {
+                      userInput = userInput + MyStrings.num1;
+                    }
                   });
                 },
                 child: Text(MyStrings.num1)),
@@ -38,7 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num2;
+                    if (userInput == '') {
+                      userInput = MyStrings.num2;
+                    } else {
+                      userInput = userInput + MyStrings.num2;
+                    }
                   });
                 },
                 child: Text(MyStrings.num2)),
@@ -46,7 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num3;
+                    if (userInput == '') {
+                      userInput = MyStrings.num3;
+                    } else {
+                      userInput = userInput + MyStrings.num3;
+                    }
                   });
                 },
                 child: Text(MyStrings.num3)),
@@ -54,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num4;
+                    if (userInput == '') {
+                      userInput = MyStrings.num4;
+                    } else {
+                      userInput = userInput + MyStrings.num4;
+                    }
                   });
                 },
                 child: Text(MyStrings.num4)),
@@ -62,7 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num5;
+                    if (userInput == '') {
+                      userInput = MyStrings.num5;
+                    } else {
+                      userInput = userInput + MyStrings.num5;
+                    }
                   });
                 },
                 child: Text(MyStrings.num5)),
@@ -70,7 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num6;
+                    if (userInput == '') {
+                      userInput = MyStrings.num6;
+                    } else {
+                      userInput = userInput + MyStrings.num6;
+                    }
                   });
                 },
                 child: Text(MyStrings.num6)),
@@ -78,7 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num7;
+                    if (userInput == '') {
+                      userInput = MyStrings.num7;
+                    } else {
+                      userInput = userInput + MyStrings.num7;
+                    }
                   });
                 },
                 child: Text(MyStrings.num7)),
@@ -86,7 +118,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num8;
+                    if (userInput == '') {
+                      userInput = MyStrings.num8;
+                    } else {
+                      userInput = userInput + MyStrings.num8;
+                    }
                   });
                 },
                 child: Text(MyStrings.num8)),
@@ -94,7 +130,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    userInput = MyStrings.num9;
+                    if (userInput == '') {
+                      userInput = MyStrings.num9;
+                    } else {
+                      userInput = userInput + MyStrings.num9;
+                    }
                   });
                 },
                 child: Text(MyStrings.num9)),
@@ -112,7 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 200,
             ),
-            Text(userInput)
+            Text(userInput),
+            Text(result.toString())
           ],
         ),
         Row(
@@ -121,18 +162,51 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200,
               height: 200,
             ),
-            MyOperationsElevatedButton(
-              textoperations: MyStrings.operation1,
-            ),
-            MyOperationsElevatedButton(
-              textoperations: MyStrings.operation2,
-            ),
-            MyOperationsElevatedButton(
-              textoperations: MyStrings.operation3,
-            ),
-            MyOperationsElevatedButton(
-              textoperations: MyStrings.operation4,
-            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    userInput = userInput + MyStrings.operation1;
+                  });
+                },
+                child: Text(MyStrings.operation1)),
+            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
+            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
+            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    if (userInput.endsWith('+') ||
+                        userInput.endsWith('-') ||
+                        userInput.endsWith('*') ||
+                        userInput.endsWith('/')) {
+                      result = int.parse(userInput.substring(0, userInput.length - 1));
+                      userInput = userInput.substring(0, userInput.length - 1) + MyStrings.operationEqual;
+                    } else {
+                      String userInput1 = userInput.substring(0, userInput.indexOf('+'));
+                      String substring = userInput.substring(userInput.indexOf('+'), userInput.length - 1);
+                      result = int.parse(userInput1) + int.parse(substring);
+                      userInput = userInput + MyStrings.operationEqual;
+                    }
+                  });
+                },
+                child: Text(MyStrings.operationEqual)),
+            ElevatedButton(
+                onPressed: () {
+                  userInput = '';
+                },
+                child: const Text('Clear')),
+            // MyOperationsElevatedButton(
+            //   textoperations: MyStrings.operation1,
+            // ),
+            // MyOperationsElevatedButton(
+            //   textoperations: MyStrings.operation2,
+            // ),
+            // MyOperationsElevatedButton(
+            //   textoperations: MyStrings.operation3,
+            // ),
+            // MyOperationsElevatedButton(
+            //   textoperations: MyStrings.operation4,
+            // ),
             const SizedBox(
               height: 20,
             ),
