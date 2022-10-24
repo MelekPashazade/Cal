@@ -10,7 +10,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 String userInput = '';
-int? result;
+double? result = 0;
 
 class _MyHomePageState extends State<MyHomePage> {
   // int m = getNumb.getNumber(MyStrings.num1);
@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num0;
                     } else {
                       userInput = userInput + MyStrings.num0;
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num1;
                     } else {
                       userInput = userInput + MyStrings.num1;
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num2;
                     } else {
                       userInput = userInput + MyStrings.num2;
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num3;
                     } else {
                       userInput = userInput + MyStrings.num3;
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num4;
                     } else {
                       userInput = userInput + MyStrings.num4;
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num5;
                     } else {
                       userInput = userInput + MyStrings.num5;
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num6;
                     } else {
                       userInput = userInput + MyStrings.num6;
@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num7;
                     } else {
                       userInput = userInput + MyStrings.num7;
@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num8;
                     } else {
                       userInput = userInput + MyStrings.num8;
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (userInput == '') {
+                    if (userInput == '' || userInput == 0) {
                       userInput = MyStrings.num9;
                     } else {
                       userInput = userInput + MyStrings.num9;
@@ -159,8 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             const SizedBox(
-              width: 200,
-              height: 200,
+              width: 100,
+              height: 100,
             ),
             ElevatedButton(
                 onPressed: () {
@@ -169,9 +169,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 },
                 child: Text(MyStrings.operation1)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
-            ElevatedButton(onPressed: () {}, child: Text(MyStrings.operation1)),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    userInput = userInput + MyStrings.operation2;
+                  });
+                },
+                child: Text(MyStrings.operation2)),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    userInput = userInput + MyStrings.operation3;
+                  });
+                },
+                child: Text(MyStrings.operation3)),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    userInput = userInput + MyStrings.operation4;
+                  });
+                },
+                child: Text(MyStrings.operation4)),
             ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -179,20 +197,44 @@ class _MyHomePageState extends State<MyHomePage> {
                         userInput.endsWith('-') ||
                         userInput.endsWith('*') ||
                         userInput.endsWith('/')) {
-                      result = int.parse(userInput.substring(0, userInput.length - 1));
+                      result = double.parse(userInput.substring(0, userInput.length - 1));
                       userInput = userInput.substring(0, userInput.length - 1) + MyStrings.operationEqual;
                     } else {
-                      String userInput1 = userInput.substring(0, userInput.indexOf('+'));
-                      String substring = userInput.substring(userInput.indexOf('+'), userInput.length - 1);
-                      result = int.parse(userInput1) + int.parse(substring);
-                      userInput = userInput + MyStrings.operationEqual;
+                      if (userInput.contains('+')) {
+                        String userInput1 = userInput.substring(0, userInput.indexOf('+'));
+                        String substring = userInput.substring(userInput.indexOf('+') + 1, userInput.length);
+                        result = double.parse(userInput1) + int.parse(substring);
+
+                        userInput = userInput + MyStrings.operationEqual;
+                      } else if (userInput.contains('-')) {
+                        String userInput1 = userInput.substring(0, userInput.indexOf('-'));
+                        String substring = userInput.substring(userInput.indexOf('-') + 1, userInput.length);
+                        result = double.parse(userInput1) - int.parse(substring);
+
+                        userInput = userInput + MyStrings.operationEqual;
+                      } else if (userInput.contains('*')) {
+                        String userInput1 = userInput.substring(0, userInput.indexOf('*'));
+                        String substring = userInput.substring(userInput.indexOf('*') + 1, userInput.length);
+                        result = double.parse(userInput1) * int.parse(substring);
+
+                        userInput = userInput + MyStrings.operationEqual;
+                      } else if (userInput.contains('/')) {
+                        String userInput1 = userInput.substring(0, userInput.indexOf('/'));
+                        String substring = userInput.substring(userInput.indexOf('/') + 1, userInput.length);
+                        result = double.parse(userInput1) / double.parse(substring);
+
+                        userInput = userInput + MyStrings.operationEqual;
+                      }
                     }
                   });
                 },
                 child: Text(MyStrings.operationEqual)),
             ElevatedButton(
                 onPressed: () {
-                  userInput = '';
+                  setState(() {
+                    userInput = '';
+                    result = 0;
+                  });
                 },
                 child: const Text('Clear')),
             // MyOperationsElevatedButton(
