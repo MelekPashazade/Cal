@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../myHomePage.dart';
-
 class MyNumbersElevatedButton extends StatefulWidget {
   MyNumbersElevatedButton({
     required this.textforButton,
@@ -14,13 +12,23 @@ class MyNumbersElevatedButton extends StatefulWidget {
 }
 
 class _MyNumbersElevatedButtonState extends State<MyNumbersElevatedButton> {
+  String userInput = '';
+  double? result = 0;
+  void buttonClick(String myNumber) {
+    setState(() {
+      if (userInput == '' || userInput == 0) {
+        userInput = myNumber;
+      } else {
+        userInput = userInput + myNumber;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          setState(() {
-            userInput = widget.textforButton;
-          });
+          buttonClick(widget.textforButton);
         },
         child: Text(widget.textforButton));
   }
